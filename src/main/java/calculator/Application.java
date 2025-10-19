@@ -15,7 +15,7 @@ public class Application {
 
     result = result.setScale(2, RoundingMode.HALF_UP);
 
-        System.out.println("결과 : " + result);
-        Console.close();
-    }
+    System.out.println("결과 : " + result);
+    Console.close();
+  }
 }
