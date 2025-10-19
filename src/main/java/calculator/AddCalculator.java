@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 import java.util.regex.Pattern;
 
 class AddCalculator {
-    private static final String DEFAULT_SEPARATOR = ",:";
-    private static final Pattern DECIMAL_PATTERN = Pattern.compile("^[+-]?\\d+(?:\\.\\d+)?$");
+  private static final String DEFAULT_SEPARATOR = ",:";
+  private static final Pattern DECIMAL_PATTERN = Pattern.compile("^[+-]?\\d+(?:\\.\\d+)?$");
 
     public BigDecimal add(String input) {
         if (input == null || input.isBlank()) { //입력이 없으면 0 return
