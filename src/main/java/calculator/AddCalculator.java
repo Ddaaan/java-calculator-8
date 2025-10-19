@@ -16,12 +16,21 @@ class AddCalculator {
     String customSeparator = null; // 사용자지정구분자
 
     if (input.startsWith("//")) {
-      int newline = input.indexOf('\n');
-      if (newline < 0) {
+      // \n 또는 \\n 리터럴 모두 허용
+      int newlineIndex = input.indexOf('\n');
+      int newlineLen = 1;
+
+      if (newlineIndex < 0) {
+        newlineIndex = input.indexOf("\\n");
+        if (newlineIndex >= 0) newlineLen = 2;
+      }
+
+      if (newlineIndex < 0) {
         throw new IllegalArgumentException("커스텀 구분자 지정 후 줄바꿈이 필요합니다.");
       }
-      customSeparator = input.substring(2, newline); // 커스텀 구분자 집합
-      number = input.substring(newline + 1); // 계산할 숫자들의 문자열
+
+      customSeparator = input.substring(2, newlineIndex); // 구분자 집합
+      number = input.substring(newlineIndex + newlineLen); // 숫자 부분
     }
 
     String splitRegex =
