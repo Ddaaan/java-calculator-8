@@ -25,10 +25,10 @@ class AddCalculator {
         throw new IllegalArgumentException("숫자만 입력이 가능합니다 : '" + token + "'");
       }
 
-            BigDecimal value = new BigDecimal(token);
-            if (value.signum() < 0) {
-                throw new IllegalArgumentException("음수는 허용되지 않습니다 : '" + token + "'");
-            }
+      BigDecimal value = new BigDecimal(token);
+      if (value.signum() < 0) {
+        throw new IllegalArgumentException("음수는 허용되지 않습니다 : '" + token + "'");
+      }
 
             sum = sum.add(value);
         }
