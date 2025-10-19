@@ -18,12 +18,12 @@ class AddCalculator {
     for (int i = 0; i < parts.length; i++) {
       String token = parts[i].trim();
 
-            if (token.isEmpty()) {
-                throw new IllegalArgumentException("빈 값은 허용되지 않습니다.");
-            }
-            if (!DECIMAL_PATTERN.matcher(token).matches()) {
-                throw new IllegalArgumentException("숫자만 입력이 가능합니다 : '" + token + "'");
-            }
+      if (token.isEmpty()) {
+        throw new IllegalArgumentException("빈 값은 허용되지 않습니다.");
+      }
+      if (!DECIMAL_PATTERN.matcher(token).matches()) {
+        throw new IllegalArgumentException("숫자만 입력이 가능합니다 : '" + token + "'");
+      }
 
             BigDecimal value = new BigDecimal(token);
             if (value.signum() < 0) {
