@@ -30,8 +30,28 @@ class AddCalculator {
         throw new IllegalArgumentException("음수는 허용되지 않습니다 : '" + token + "'");
       }
 
-            sum = sum.add(value);
-        }
-        return sum;
+      sum = sum.add(value);
     }
+    return sum;
+  }
+
+  private static boolean needsEscape(char delimiterChar, boolean isFirst) {
+    return delimiterChar == '\\'
+        || delimiterChar == '-'
+        || delimiterChar == ']'
+        || (isFirst && delimiterChar == '^');
+  }
+
+  private String buildCharClassRegex(String delimiter) {
+    StringBuilder charClassBuilder = new StringBuilder("[");
+    for (int i = 0; i < delimiter.length(); i++) {
+      char delimiterChar = delimiter.charAt(i);
+      if (needsEscape(delimiterChar, i == 0)) {
+        charClassBuilder.append('\\');
+      }
+      charClassBuilder.append(delimiterChar);
+    }
+    charClassBuilder.append(']');
+    return charClassBuilder.toString();
+  }
 }
