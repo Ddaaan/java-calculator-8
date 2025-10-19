@@ -7,10 +7,10 @@ class AddCalculator {
   private static final String DEFAULT_SEPARATOR = ",:";
   private static final Pattern DECIMAL_PATTERN = Pattern.compile("^[+-]?\\d+(?:\\.\\d+)?$");
 
-    public BigDecimal add(String input) {
-        if (input == null || input.isBlank()) { //입력이 없으면 0 return
-            return BigDecimal.ZERO;
-        }
+  public BigDecimal add(String input) {
+    if (input == null || input.isBlank()) { // 입력이 없으면 0 return
+      return BigDecimal.ZERO;
+    }
 
         BigDecimal sum = BigDecimal.ZERO;
         String[] parts = input.split(DEFAULT_SEPARATOR); //구분자로 쪼개기
