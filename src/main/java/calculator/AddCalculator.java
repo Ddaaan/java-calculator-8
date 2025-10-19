@@ -15,8 +15,8 @@ class AddCalculator {
         BigDecimal sum = BigDecimal.ZERO;
         String[] parts = input.split(DEFAULT_SEPARATOR); //구분자로 쪼개기
 
-        for (int i=0; i<parts.length; i++) {
-            String token = parts[i].trim();
+    for (int i = 0; i < parts.length; i++) {
+      String token = parts[i].trim();
 
             if (token.isEmpty()) {
                 throw new IllegalArgumentException("빈 값은 허용되지 않습니다.");
