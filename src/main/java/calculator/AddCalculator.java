@@ -12,8 +12,23 @@ class AddCalculator {
       return BigDecimal.ZERO;
     }
 
-        BigDecimal sum = BigDecimal.ZERO;
-        String[] parts = input.split(DEFAULT_SEPARATOR); //구분자로 쪼개기
+    String number = input; // 사용자지정구분자가 있을 때 계산할 숫자 문자열
+    String customSeparator = null; // 사용자지정구분자
+
+    if (input.startsWith("//")) {
+      int newline = input.indexOf('\n');
+      if (newline < 0) {
+        throw new IllegalArgumentException("커스텀 구분자 지정 후 줄바꿈이 필요합니다.");
+      }
+      customSeparator = input.substring(2, newline); // 커스텀 구분자 집합
+      number = input.substring(newline + 1); // 계산할 숫자들의 문자열
+    }
+
+    String splitRegex =
+        buildCharClassRegex(DEFAULT_SEPARATOR + (customSeparator != null ? customSeparator : ""));
+    String[] parts = number.split(splitRegex); // 구분자로 쪼개기
+
+    BigDecimal sum = BigDecimal.ZERO;
 
     for (int i = 0; i < parts.length; i++) {
       String token = parts[i].trim();
