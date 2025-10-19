@@ -7,8 +7,10 @@ public class Application {
         System.out.println("덧셈할 문자열을 입력해주세요.");
         String input = Console.readLine();
 
-        AddCalculator calculator = new AddCalculator();
-        int result = calculator.add(input);
+    AddCalculator calculator = new AddCalculator();
+    BigDecimal result = calculator.add(input);
+
+    result = result.setScale(2, RoundingMode.HALF_UP);
 
         System.out.println("결과 : " + result);
         Console.close();
